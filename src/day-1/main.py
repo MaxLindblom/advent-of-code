@@ -41,37 +41,27 @@ def get_calibration_value_part_one(sequence: str) -> int:
 
     return int(first+last)
 
+def parse_calibration_sequence(sequence: str, calibration_map: map) -> str:
+    """
+    Parses a calibration sequence
+    """
+    word = ''
+    for char in sequence:
+        for key, value in calibration_map.items():
+            if word.find(key) != -1:
+                return value
+        if char.isdigit():
+            return char
+        word += char
+
+    return '0'
+
 def get_calibration_value_part_two(sequence: str) -> int:
     """
     Returns the calibration value for a single sequence, for the second part
     """
-    first = '0'
-    word = ''
-    for char in sequence:
-        for key, value in CALIBRATIONS.items():
-            if word.find(key) != -1:
-                first = value
-                break
-        if first != '0':
-            break
-        if char.isdigit():
-            first = char
-            break
-        word += char
-
-    last = '0'
-    word = ''
-    for char in sequence[::-1]:
-        for key, value in CALIBRATIONS_REVERSED.items():
-            if word.find(key) != -1:
-                last = value
-                break
-        if last != '0':
-            break
-        if char.isdigit():
-            last = char
-            break
-        word += char
+    first = parse_calibration_sequence(sequence, CALIBRATIONS)
+    last = parse_calibration_sequence(sequence[::-1], CALIBRATIONS_REVERSED)
 
     return int(first+last)
 
