@@ -42,7 +42,7 @@ def get_calibration_value_part_one(sequence: str) -> int:
 
     return int(first+last)
 
-def parse_calibration_sequence(sequence: str, calibration_map: map) -> str:
+def parse_calibration_sequence(sequence: str, calibration_map: dict) -> str:
     """
     Parses a calibration sequence
     """
