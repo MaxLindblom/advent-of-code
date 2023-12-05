@@ -5,6 +5,7 @@ Main script for the day 1 problem
 from functools import reduce
 from pathlib import Path
 from src.files.read import file_to_array
+from src.print_results import print_results
 
 CALIBRATIONS = {
     'one': '1',
@@ -72,12 +73,9 @@ def main():
     sequences = file_to_array(Path(__file__).with_name('input.txt'))
 
     first_result = reduce(lambda x, y: x+get_calibration_value_part_one(y), sequences, 0)
-    print('result from first part:')
-    print(first_result)
-
     second_result = reduce(lambda x, y: x+get_calibration_value_part_two(y), sequences, 0)
-    print('result from second part:')
-    print(second_result)
+
+    print_results(first_result, second_result)
 
 if __name__ == '__main__':
     main()
