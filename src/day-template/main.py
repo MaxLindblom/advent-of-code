@@ -12,8 +12,8 @@ def main():
     """
     sequences = file_to_array(Path(__file__).with_name('input.txt'))
 
-    first_result = 0
-    second_result = 0
+    first_result = len(sequences)
+    second_result = len(sequences)
 
     print_results(first_result, second_result)
 
